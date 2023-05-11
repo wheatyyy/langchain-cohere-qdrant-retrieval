@@ -22,7 +22,10 @@ def hello_world():
 
 ## Embedding code
 from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import PyPDFLoader
+## from langchain.text_splitter import RecursiveCharacterTextSplitter
+## from langchain.llms import OpenAI
+## from langchain.chains import VectorDBQA, RetrievalQA
+from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
 
 @app.route('/embed', methods=['POST'])
@@ -42,6 +45,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from qdrant_client import QdrantClient
 
+
 @app.route('/retrieve', methods=['POST'])
 def retrieve_info():
     collection_name = request.json.get("collection_name")
@@ -52,7 +56,7 @@ def retrieve_info():
     embeddings = OpenAIEmbeddings(model="gpt-3.5turbo", openai_api_key=openai_api_key)
     qdrant = Qdrant(client=client, collection_name=collection_name, embedding_function=embeddings.embed_query)
     search_results = qdrant.similarity_search(query, k=2)
-    chain = load_qa_chain(OpenAI(openai_api_key=openai_api_key,temperature=0.2), chain_type="stuff")
+    chain = load_qa_chain(OpenAI(openai_api_key=openai_api_key,temperature=0.2), chain_type="map_reduce")
     results = chain({"input_documents": search_results, "question": query}, return_only_outputs=True)
     
     return {"results":results["output_text"]}
