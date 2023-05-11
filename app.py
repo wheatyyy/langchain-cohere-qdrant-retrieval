@@ -36,9 +36,9 @@ def embed_pdf():
 
     loader = PyPDFLoader(file_url)
     docs = loader.load_and_split()
-    embeddings = OpenAIEmbeddings(model="gpt-3.5turbo", openai_api_key=openai_api_key)
+    embeddings = OpenAIEmbeddings(model="gpt-3.5-turbo", openai_api_key=openai_api_key)
     qdrant = Qdrant.from_documents(docs, embeddings, url=qdrant_url, collection_name=collection_name, prefer_grpc=True, api_key=qdrant_api_key)
-    model_name = "openai/gpt-3.5-turbo"
+    model_name = "gpt-3.5-turbo"
     tokenizer = tiktok.get_encoding(model_name)
 
     return {"collection_name":qdrant.collection_name}
@@ -56,7 +56,7 @@ def retrieve_info():
 
     client = QdrantClient(url=qdrant_url, prefer_grpc=True, api_key=qdrant_api_key)
 
-    embeddings = OpenAIEmbeddings(model="gpt-3.5turbo", openai_api_key=openai_api_key)
+    embeddings = OpenAIEmbeddings(model="gpt-3.5-turbo", openai_api_key=openai_api_key)
     qdrant = Qdrant(client=client, collection_name=collection_name, embedding_function=embeddings.embed_query)
     search_results = qdrant.similarity_search(query, k=2)
     chain = load_qa_chain(OpenAI(openai_api_key=openai_api_key,temperature=0.2), chain_type="stuff")
