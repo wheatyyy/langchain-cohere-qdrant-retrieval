@@ -27,6 +27,7 @@ from langchain.embeddings import OpenAIEmbeddings
 ## from langchain.chains import VectorDBQA, RetrievalQA
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
+import tiktoken
 
 @app.route('/embed', methods=['POST'])
 def embed_pdf():
