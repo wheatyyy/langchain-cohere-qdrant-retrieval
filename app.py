@@ -29,9 +29,6 @@ from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
 import tiktok
 
-model_name = "openai/gpt-3.5-turbo"
-tokenizer = tiktok.get_encoding(model_name)
-
 @app.route('/embed', methods=['POST'])
 def embed_pdf():
     collection_name = request.json.get("collection_name")
@@ -41,7 +38,9 @@ def embed_pdf():
     docs = loader.load_and_split()
     embeddings = OpenAIEmbeddings(model="gpt-3.5turbo", openai_api_key=openai_api_key)
     qdrant = Qdrant.from_documents(docs, embeddings, url=qdrant_url, collection_name=collection_name, prefer_grpc=True, api_key=qdrant_api_key)
-    
+    model_name = "openai/gpt-3.5-turbo"
+    tokenizer = tiktok.get_encoding(model_name)
+
     return {"collection_name":qdrant.collection_name}
 
 # Retrieve information from a collection
