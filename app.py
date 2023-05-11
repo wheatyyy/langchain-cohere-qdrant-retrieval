@@ -27,7 +27,10 @@ from langchain.embeddings import OpenAIEmbeddings
 ## from langchain.chains import VectorDBQA, RetrievalQA
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
-import tiktoken
+import tiktok
+
+model_name = "openai/gpt-3.5-turbo"
+tokenizer = tiktok.get_encoding(model_name)
 
 @app.route('/embed', methods=['POST'])
 def embed_pdf():
