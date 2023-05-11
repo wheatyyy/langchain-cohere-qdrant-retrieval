@@ -21,13 +21,12 @@ def hello_world():
     return {"Hello":"World"}
 
 ## Embedding code
-from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import OpenAIEmbeddings,tiktoken
 ## from langchain.text_splitter import RecursiveCharacterTextSplitter
 ## from langchain.llms import OpenAI
 ## from langchain.chains import VectorDBQA, RetrievalQA
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
-import tiktoken
 
 @app.route('/embed', methods=['POST'])
 def embed_pdf():
