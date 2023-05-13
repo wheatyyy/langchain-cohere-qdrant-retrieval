@@ -16,9 +16,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Test default route
-@app.route('/',methods=["GET","POST"])
+@app.route("/")
 def hello_world():
-    return str{"Lang Chain Start"}
+   return "<p>Hello, World!</p>"
 
 ## Embedding code
 from langchain.embeddings import OpenAIEmbeddings
