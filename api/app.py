@@ -18,7 +18,7 @@ CORS(app)
 # Test default route
 @app.route('/', methods=["GET"])
 def hello_world():
-    return "Hello, World!"
+    return 'Hello, World!'
 
 ## Embedding code
 from langchain.embeddings import OpenAIEmbeddings
