@@ -2,7 +2,6 @@ from flask import Flask, request
 from flask_cors import CORS
 import json
 
-
 # Loading environment variables
 import os
 from dotenv import load_dotenv
