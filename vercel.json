@@ -1,14 +1,6 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/app" 
-    },
-    {
-      "source": "/embed",
-      "method": ["POST"]
-    },
-    {
-      "source": "/retrieve",
-      "method": ["POST"]
     }
   ]
 }
