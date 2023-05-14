@@ -1,11 +1,14 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/app" }
-  ],
-  "routes1": [
-    { "handle": "app", "method": "POST", "src": "/embed" }
-  ],
-  "routes2": [
-    { "handle": "app", "method": "POST", "src": "/retrieve" }
+    { "source": "/(.*)", "destination": "/api/app" 
+    },
+    {
+      "src": "/embed",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/retrieve",
+      "methods": ["POST"]
+    }
   ]
 }
