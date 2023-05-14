@@ -1,6 +1,23 @@
 from flask import Flask, request
 from flask_cors import CORS
 import json
+from http.server import BaseHTTPRequestHandler
+import urllib.request
+
+class handler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        url = 'https://...'
+
+        req = urllib.request.Request(url)
+        with urllib.request.urlopen(req) as res:
+            body = res.read()
+
+        self.send_response(200)
+        self.send_header('Content-type','application/json; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(body)
+        return
 
 # Loading environment variables
 import os
