@@ -4,11 +4,11 @@
     },
     {
       "source": "/embed",
-      "methods": ["POST"]
+      "method": ["POST"]
     },
     {
       "source": "/retrieve",
-      "methods": ["POST"]
+      "method": ["POST"]
     }
   ]
 }
