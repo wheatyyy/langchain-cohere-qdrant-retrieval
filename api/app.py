@@ -27,7 +27,6 @@ from langchain.embeddings import OpenAIEmbeddings
 ## from langchain.chains import VectorDBQA, RetrievalQA
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
-import tiktok
 
 @app.route('/embed', methods=['POST'])
 def embed_pdf():
@@ -39,7 +38,6 @@ def embed_pdf():
     embeddings = OpenAIEmbeddings(model="gpt-3.5-turbo", openai_api_key=openai_api_key)
     qdrant = Qdrant.from_documents(docs, embeddings, url=qdrant_url, collection_name=collection_name, prefer_grpc=True, api_key=qdrant_api_key)
     model_name = "gpt-3.5-turbo"
-    tokenizer = tiktok.get_encoding(model_name)
 
     return {"collection_name":qdrant.collection_name}
 
