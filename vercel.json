@@ -3,11 +3,11 @@
     { "source": "/(.*)", "destination": "/api/app" 
     },
     {
-      "src": "/embed",
+      "source": "/embed",
       "methods": ["POST"]
     },
     {
-      "src": "/retrieve",
+      "source": "/retrieve",
       "methods": ["POST"]
     }
   ]
