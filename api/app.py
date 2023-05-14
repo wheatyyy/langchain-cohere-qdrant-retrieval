@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Test default route
-@app.route('/', methods=["GET"])
+@app.route('/', methods=["GET","POST"])
 def hello_world():
     return 'Hello, World!'
 
