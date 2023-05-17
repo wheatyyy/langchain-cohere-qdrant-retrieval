@@ -128,9 +128,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 poetry-convert.py
-
-# vercel
-.vercel
-*.log
-*.pyc
-__pycache__
