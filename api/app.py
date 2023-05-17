@@ -22,9 +22,9 @@ def hello_world():
 
 ## Embedding code
 from langchain.embeddings import OpenAIEmbeddings
-## from langchain.text_splitter import RecursiveCharacterTextSplitter
-## from langchain.llms import OpenAI
-## from langchain.chains import VectorDBQA, RetrievalQA
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.llms import OpenAI
+from langchain.chains import VectorDBQA, RetrievalQA
 from langchain.document_loaders import TextLoader, PyPDFLoader
 from langchain.vectorstores import Qdrant
 import tiktoken
