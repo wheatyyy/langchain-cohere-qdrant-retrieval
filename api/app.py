@@ -12,14 +12,13 @@ qdrant_url = os.environ.get('qdrant_url')
 qdrant_api_key = os.environ.get('qdrant_api_key')
 
 #Flask config
-app = Flask(__name__)
+app = Flask(name)
 CORS(app)
 
 # Test default route
 @app.route('/', methods=["GET"])
 def hello_world():
     return "Hello, World!"
-
 ## Embedding code
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -60,5 +59,5 @@ def retrieve_info():
     search_results = qdrant.similarity_search(query, k=2)
     chain = load_qa_chain(OpenAI(openai_api_key=openai_api_key,temperature=0.2), chain_type="stuff")
     results = chain({"input_documents": search_results, "question": query}, return_only_outputs=True)
-    
+
     return {"results":results["output_text"]}
